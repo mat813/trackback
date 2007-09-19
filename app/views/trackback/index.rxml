@@ -1,0 +1,4 @@
+xml.response do
+  xml.error(@ret)
+  xml.message(@message) if @ret != 0
+end

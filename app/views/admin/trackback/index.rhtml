@@ -1,0 +1,27 @@
+<h1>Trackbaks</h1>
+
+<table id="trackbaks" class="index" cellpadding="0" cellspacing="0" border="0">
+  <thead>
+    <tr>
+      <th class="page">Page</th>
+      <th class="title">Title</th>
+      <th class="blogname">Blog Name</th>
+      <th class="excerpt">Excerpt</th>
+      <th class="approved">Approved</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @trackbacks.each do |t| -%>
+    <tr id="trackbacks-<%= t.id %>">
+      <td><%= t.page.title %></td>
+      <td><%= link_to t.title, t.url %></td>
+      <td><%= t.blog_name %></td>
+      <td><%= t.excerpt %></td>
+      <td><%= check_box_tag "trackback-approved_#{ t.id }", 1, t.approved, :onclick => remote_function( :url => { :action => 'approve', :id => t.id }, :with => "'approved='+this.checked" )  %></td>
+      <td><%= link_to_remote image('remove', :alt => 'remove tracback'), :complete => "Effect.Shrink('trackbacks-#{t.id}')", :url => { :action => 'destroy', :id => t.id } %></td>
+    </tr>
+<% end -%>
+  </tbody>
+</table>
+<%= link_to "Previous page", { :page => @trackback_pages.current.previous } if @trackback_pages.current.previous %>
+<%= link_to "Next page", { :page => @trackback_pages.current.next } if @trackback_pages.current.next %>
