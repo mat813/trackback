@@ -1,6 +1,6 @@
-<h1>Trackbaks</h1>
+<h1>Trackbacks</h1>
 
-<table id="trackbaks" class="index" cellpadding="0" cellspacing="0" border="0">
+<table id="trackbacks" class="index" cellpadding="0" cellspacing="0" border="0">
   <thead>
     <tr>
       <th class="page">Page</th>
@@ -12,7 +12,7 @@
   </thead>
   <tbody>
 <% @trackbacks.each do |t| -%>
-    <tr id="trackbacks-<%= t.id %>">
+    <tr id="trackbacks-<%= t.id %>" class="<%= cycle('odd', 'even') %>">
       <td><%= t.page.title %></td>
       <td><%= link_to t.title, t.url %></td>
       <td><%= t.blog_name %></td>
@@ -25,3 +25,9 @@
 </table>
 <%= link_to "Previous page", { :page => @trackback_pages.current.previous } if @trackback_pages.current.previous %>
 <%= link_to "Next page", { :page => @trackback_pages.current.next } if @trackback_pages.current.next %>
+
+<script type="text/javascript">
+// <![CDATA[
+  new RuledTable('trackbacks');
+// ]]>
+</script>
