@@ -19,7 +19,7 @@ module TrackbackTagExtensions
     <pre><code><r:trackbacks:url /></code></pre>
   }
   tag 'trackbacks:url' do |tag|
-    eval "class ::#{tag.locals.page.response.template.controller.class}; public :trackback_path; end"
+    tag.locals.page.response.template.controller.class.send(:public, :trackback_path)
     tag.locals.page.response.template.controller.trackback_path(tag.locals.page.id)
   end
 
@@ -30,7 +30,7 @@ module TrackbackTagExtensions
     <pre><code><r:trackback:root /></code></pre>
   }
   tag 'trackbacks:root' do |tag|
-    eval "class ::#{tag.locals.page.response.template.controller.class}; public :trackback_path, :trackback_url; end"
+    tag.locals.page.response.template.controller.class.send(:public, :trackback_path, :trackback_url)
     tag.locals.page.response.template.controller.trackback_url(tag.locals.page.id).gsub(/#{tag.locals.page.response.template.controller.trackback_path(tag.locals.page.id)}/, '')
   end
 
