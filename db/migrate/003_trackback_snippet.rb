@@ -15,7 +15,7 @@ class TrackbackSnippet < ActiveRecord::Migration
         trackback:ping="<r:trackbacks:root /><r:trackbacks:url />" />
     </rdf:RDF>
   -->
-  <h3><a name="trackbacks">Trackbacks (<r:trackbacks:count />)</a></h3>
+  <h3><a id="trackbacks_anchor">Trackbacks<r:if_trackbacks> (<r:trackbacks:count />)</r:if_trackbacks></a></h3>
   <p>Use the following link to trackback from your own site:<br />
     <r:trackbacks:root /><r:trackbacks:url />
   </p><r:if_trackbacks>
