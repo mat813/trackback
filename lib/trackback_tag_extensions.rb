@@ -2,6 +2,13 @@ module TrackbackTagExtensions
   include Radiant::Taggable
 
   desc %{
+    Renders the contained elements if the page has trackbacks.
+  }
+  tag 'if_trackbacks' do |tag|
+    tag.expand if tag.locals.page.visible_trackbacks.count > 0
+  end
+
+  desc %{
     Gives access to a page's trackback.
 
     *Usage:*

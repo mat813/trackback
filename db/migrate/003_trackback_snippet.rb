@@ -18,7 +18,7 @@ class TrackbackSnippet < ActiveRecord::Migration
   <h3><a name="trackbacks">Trackbacks (<r:trackbacks:count />)</a></h3>
   <p>Use the following link to trackback from your own site:<br />
     <r:trackbacks:root /><r:trackbacks:url />
-  </p>
+  </p><r:if_trackbacks>
   <ul><r:trackbacks:each>
     <li>
       <div class="author">
@@ -27,7 +27,7 @@ class TrackbackSnippet < ActiveRecord::Migration
       </div>
       <div class="content"><r:tb_excerpt /></div>
     </li>
-  </r:trackbacks:each></ol>
+  </r:trackbacks:each></ol></r:if_trackbacks>
 </div>
     eot
   end
