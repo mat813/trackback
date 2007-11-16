@@ -37,8 +37,7 @@ module TrackbackTagExtensions
     <pre><code><r:trackback:root /></code></pre>
   }
   tag 'trackbacks:root' do |tag|
-    tag.locals.page.response.template.controller.class.send(:public, :trackback_path, :trackback_url)
-    tag.locals.page.response.template.controller.trackback_url(tag.locals.page.id).gsub(/#{tag.locals.page.response.template.controller.trackback_path(tag.locals.page.id)}/, '')
+    request.protocol + request.host_with_port
   end
 
   desc %{
